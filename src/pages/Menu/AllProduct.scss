@@ -1,0 +1,7 @@
+.category-item{
+    transition: linear .2s ;
+    &:hover{
+        scale: 1.025;
+        transition: linear .2s;
+    }
+}

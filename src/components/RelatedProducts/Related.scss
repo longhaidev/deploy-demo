@@ -1,0 +1,17 @@
+.product-hover{
+    &:hover {
+        .product-active{        
+            opacity: 1;
+            transform: translateY(0px);
+            transition: linear .3s all;
+            pointer-events: auto;
+        }
+    }
+  
+}
+.product-active{
+    opacity: 0;
+    transform: translateY(10px);
+    transition: linear .3s all;
+    pointer-events: none;
+}

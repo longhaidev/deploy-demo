@@ -1,0 +1,31 @@
+
+
+.active {
+    left: 0;
+    transition: ease-out .45s ;
+}
+.unactive {
+    left: -200%;
+    transition: ease-out .45s;
+}
+.onhover{
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            scale: 0;
+        } to{
+            opacity: 1;
+            scale: 0.3;
+        }
+    };
+
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50px;
+        border-bottom: 1px black solid;
+        transition: linear .2s ;
+        animation: fadeIn linear .2s;
+    }
+}

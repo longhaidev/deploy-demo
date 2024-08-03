@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./styleVariables.css";
+
+body {
+  margin: 0;
+  font-family: var(--font-family-primary) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  font-family: "Alegreya";
+  user-select: none;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+input,
+select,
+textarea {
+  background-color: transparent;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: 0;
+}
+body {
+  min-height: 100vh;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+}
+.font-primary {
+  font-family: var(--font-family-primary) !important;
+}
+.line-hover-primary {
+  background-color: var(--line-hover-primary);
+}
+.line-hover-secondary {
+  background-color: var(--line-hover-secondary);
+}
+.line-hover-black {
+  background-color: var(--line-hover-black);
+}
+.text-color-primary {
+  color: var(--text-color-primary);
+}
+.text-color-secondary {
+  color: var(--text-color-seconday);
+}
+.text-color-high-light {
+  color: var(--text-color-high-light);
+}
+.text-color-sub {
+  color: var(--text-color-sub);
+}
+.text-color-button {
+  color: var(--text-color-button);
+}
+.text-color-hover {
+  color: var(--text-color-hover);
+}
+.font-section-heading {
+  font-size: var(--font-section-heading);
+}
+.font-section-sub-heading {
+  font-size: var(--font-section-heading);
+}
+.font-section-alternative {
+  font-size: var(--font-section-alternative-heading);
+}
+.font-big-heading {
+  font-size: var(--font-big-heading);
+}
+.font-medium-heading {
+  font-size: var(--font-medium-heading);
+}
+.font-small-heading {
+  font-size: var(--font-small-heading);
+}
+.font-text-primary {
+  font-size: var(--font-text-primary);
+}
+.font-text-secondary {
+  font-size: var(--font-text-secondary);
+}
+.font-text-alternative {
+  font-size: var(--font-text-alternative);
+}
+.font-text-small-alternative {
+  font-size: var(--font-text-small-alternative);
+}
+
+.button-bg-color-primary {
+  background-color: var(--button-bg-primary);
+}
+.button-bg-color-secondary {
+  background-color: var(--button-bg-secondary);
+}
+.button-bg-hover-primary {
+  background-color: var(--button-bg-hover-primary);
+}
+.button-bg-hover-secondary {
+  background-color: var(--button-bg-hover-secondary);
+}
+.bg-color-primary {
+  background-color: var(--bg-color-primary);
+}
+.bg-color-secondary {
+  background-color: var(--bg-color-secondary);
+}
+
+.navlink-hover {
+  position: relative;
+}
+.navlink-hover::after {
+  z-index: 1;
+  content: " ";
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  background-color: var(--line-hover);
+  height: 1.5px;
+  width: 0;
+  transition: linear 0.3s;
+}
+.navlink-hover::before {
+  z-index: 1;
+  content: " ";
+  position: absolute;
+  right: 50%;
+  bottom: 0px;
+  background-color: var(--line-hover);
+  height: 1.5px;
+  width: 0;
+  transition: linear 0.3s;
+}
+.navlink-hover:hover::after,
+.navlink-hover:hover::before {
+  width: 50%;
+}
+
+/* Custome MUI */
+/* MUI Form */
+.MuiFormControlLabel-label,
+.MuiFormLabel-root,
+.MuiInputBase-inputSizeSmall,
+.MuiMenuItem-root {
+  font-family: "Alegreya" !important;
+  font-size: 16px !important;
+  @media (min-width: 768px) {
+    font-size: 18px !important;
+  }
+}
+/* MUI Table */
+.MuiTableCell-root {
+  font-family: "Alegreya " !important;
+  font-size: 18px !important;
+}
+.css-1086bdv-MuiPaper-root-MuiAccordion-root {
+  border-radius: 0px !important;
+  box-shadow: 0px 0px 0px 0px !important;
+  border-top: none;
+  border-bottom: 0.5px solid #ccc;
+}
+.MuiAccordionSummary-content {
+  margin-top: 12px !important;
+  margin-bottom: 0px !important;
+}
+.MuiAccordionSummary-root {
+  padding: 0 !important;
+}
+.css-15v22id-MuiAccordionDetails-root {
+  padding: 8px 0px !important;
+}
+.MuiTableRow-root {
+  th,
+  td {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+}
+.space-layout-from-header {
+  padding-top: 58px;
+  @media (min-width: 1024px) {
+    padding-top: 64.3px;
+  }
+  @media (min-width: 768px) {
+    padding-top: 56.3px;
+  }
+}
+.sticky-element-from-header {
+  top: var(--sticky-element-mobile);
+  @media (min-width: 1024px) {
+    top: var(--sticky-element-pc);
+  }
+  @media (min-width: 768px) {
+    top: var(--sticky-element-tablet) !important;
+  }
+}

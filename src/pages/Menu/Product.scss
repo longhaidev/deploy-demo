@@ -1,0 +1,11 @@
+.product-hover{
+    &:hover{
+        .product-hover-active{
+            scale: 1.07;
+            transition: .2s linear all;
+        }
+    }
+    .product-hover-active{
+        transition: .2s linear all;
+    }
+}
