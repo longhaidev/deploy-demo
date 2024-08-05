@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import _ from "lodash";
 // cpn
-import Banner from "../../components/Banner/Banner";
-import FoodSection from "../../components/FoodSection/FoodSection";
-import OurStory from "../../components/OurStory/OurStory";
+import Banner from "components/Banner/Banner";
+import FoodSection from "components/FoodSection/FoodSection";
+import OurStory from "components/OurStory/OurStory";
 
 // fake data
-import categories from "../../assets/FakeData/categories.json";
+import categories from "assets/FakeData/categories.json";
 const Home = () => {
   const [bakeryGroup, setBakeryGroup] = useState([]);
   const [beverageGroup, setBeverageGroup] = useState([]);

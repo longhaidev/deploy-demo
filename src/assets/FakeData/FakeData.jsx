@@ -1,17 +1,17 @@
-import breadImg from "../Pictures/bread-img2.jpg";
-import cakeImg from "../Pictures/cakes1.jpeg";
-import pastryImg from "../Pictures/pastry1.jpg";
-import coffeeImg from "../Pictures/coffee1.jpg";
-import teaImg from "../Pictures/tea1.jpg";
-import blended from "../Pictures/blended1.jpg";
-import sandwichImg from "../Pictures/sandwich1.jpg";
-import breadIcon from "../../assets/Pictures/bread-icon1.png";
-import sandwitchIcon from "../../assets/Pictures/sandwich-icon1.png";
-import teaIcon from "../../assets/Pictures/tea-icon1.png";
-import cakeIcon from "../../assets/Pictures/cake-icon1.png";
-import blendedIcon from "../../assets/Pictures/blended-icon1.png";
-import pastryIcon from "../../assets/Pictures/pastry-icon1.png";
-import coffeeIcon from "../../assets/Pictures/coffee-icon1.png";
+import breadImg from "assets/Pictures/bread-img2.jpg";
+import cakeImg from "assets/Pictures/cakes1.jpeg";
+import pastryImg from "assets/Pictures/pastry1.jpg";
+import coffeeImg from "assets/Pictures/coffee1.jpg";
+import teaImg from "assets/Pictures/tea1.jpg";
+import blended from "assets/Pictures/blended1.jpg";
+import sandwichImg from "assets/Pictures/sandwich1.jpg";
+import breadIcon from "assets/Pictures/bread-icon1.png";
+import sandwitchIcon from "assets/Pictures/sandwich-icon1.png";
+import teaIcon from "assets/Pictures/tea-icon1.png";
+import cakeIcon from "assets/Pictures/cake-icon1.png";
+import blendedIcon from "assets/Pictures/blended-icon1.png";
+import pastryIcon from "assets/Pictures/pastry-icon1.png";
+import coffeeIcon from "assets/Pictures/coffee-icon1.png";
 // lib
 import { v4 } from "uuid";
 
@@ -333,5 +333,20 @@ export const products = [
     stock: 20,
     img: "https://cdn.prod.website-files.com/649249d29a20bd6bc3deac48/65eba35e870c693d70e06744_Strawberry%20Croissant%201.png",
     quantity: 0,
+  },
+];
+
+export const cityOptions = [
+  {
+    value: "HCM",
+    label: "Ho Chi Minh City",
+  },
+  {
+    value: "HN",
+    label: "Ha Noi City",
+  },
+  {
+    value: "DN",
+    label: "Da Nang City",
   },
 ];

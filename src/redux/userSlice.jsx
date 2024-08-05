@@ -5,10 +5,7 @@ import { toast } from "react-toastify";
 const INITIAL_STATE = {
   account: {
     email: "",
-    role: "",
     username: "",
-    access_token: "",
-    refresh_token: "",
   },
   isAuthenticated: false,
 };
@@ -50,6 +47,5 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice.reducer;
-
 export const { doLogin, doLogOut } = userSlice.actions;
+export default userSlice.reducer;

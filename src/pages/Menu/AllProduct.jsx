@@ -9,7 +9,7 @@ import "./AllProduct.scss";
 import { category } from "assets/FakeData/FakeData";
 import PageDirect from "components/PageDirect/PageDirect";
 import products from "assets/FakeData/products.json";
-import ProductCard from "components/ProductCard/ProductCard";
+import ProductCard from "components/Product/ProductCard";
 export default function AllProduct() {
   const [allProduct, setAllProduct] = useState([]);
   useEffect(() => {

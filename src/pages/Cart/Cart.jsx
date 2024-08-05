@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // components
-import CheckOutButton from "components/Button/CheckOutButton";
+import CustomButton from "components/Button/CustomButton";
 import emptyCart from "assets/Pictures/empty-cart.png";
 // UI & icon
 import { FiMinus } from "react-icons/fi";
@@ -20,10 +21,12 @@ export default function Cart() {
   const cartItem = useSelector((state) => state.cart.cart);
   const cartPrice = useSelector((state) => state.cart.totalPrice);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // didmount
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
-
+  // event handle
   const handleRemoveFromCart = (product) => {
     dispatch(removeFromCart(product));
   };
@@ -43,6 +46,11 @@ export default function Cart() {
   };
   const handleClearCart = () => {
     dispatch(clearCart(cartItem));
+  };
+  const handleCheckOut = () => {
+    window.scroll(0, 0);
+    console.log("checkout");
+    navigate("/checkout");
   };
   return (
     <div className="mb-[5%] mt-3 flex flex-col items-center">
@@ -190,15 +198,19 @@ export default function Cart() {
                 </p>
               </span>
             </h3>
-            <CheckOutButton
-              styles={{
+            <CustomButton
+              type={"primary"}
+              content="Process to checkout"
+              sx={{
                 paddingTop: "5px",
                 paddingBottom: "5px",
                 borderRadius: "70px",
                 fontSize: "18px",
                 textTransform: "none",
+                width: "100%",
               }}
-            ></CheckOutButton>
+              handleClick={handleCheckOut}
+            ></CustomButton>
             <div className="text-center w-full mt-2">
               <NavLink
                 className="italic text-[14px] navlink-hover md:!text-[16px]"

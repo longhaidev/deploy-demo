@@ -1,4 +1,7 @@
 :root {
+  --color-primary: #ff6d00;
+  --color-secondary: #f1dab2;
+
   --sticky-element-mobile: 56px;
   --sticky-element-tablet: 56px;
   --sticky-element-pc: 63.5px;
@@ -37,7 +40,10 @@
 
   /* button color */
   --button-bg-primary: #ff6d00;
-  --button-bg-secondary: #f1dab2;
+  --button-bg-secondary: white;
+  --button-bg-alternative: #f1dab2;
+
   --button-bg-hover-primary: #ff6d00;
-  --button-bg-hover-secondary: white;
+  --button-bg-hover-secondary: #ff6d00;
+  --button-bg-alternative-hover: white;
 }

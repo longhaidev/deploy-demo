@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import { userCheckoutFormSchema } from "utils/Validators/validateSchema";
+import { yupResolver } from "@hookform/resolvers/yup";
 // components
-import ConfirmOrder from "components/Button/ConfirmOrder";
+import CustomButton from "components/Button/CustomButton";
 // UI & icon
 import {
   FormControlLabel,
@@ -18,39 +20,34 @@ import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import { MdExpandLess } from "react-icons/md";
 import { MdOutlineLocalShipping } from "react-icons/md";
 import { MdOutlinePayment } from "react-icons/md";
+// fake data
+import { cityOptions } from "assets/FakeData/FakeData";
 export default function Checkout() {
   // redux
   const cartItem = useSelector((state) => state.cart.cart);
   const cartPrice = useSelector((state) => state.cart.totalPrice);
   const cartTotal = useSelector((state) => state.cart.totalQuantity);
   // state
-  const [errorMsg, setErrorMsg] = useState({});
-  const [formCheckout, setFormCheckout] = useState({
-    name: "",
-    email: "",
-    city: "",
-    address: "",
-    note: "",
-    shipMethod: "cod",
-    payment: "cash",
-    product: cartItem ?? [],
-    totalPrice: cartPrice ?? 0,
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      address: "",
+      phone: "",
+      city: "",
+      payment: "",
+      shipMethod: "",
+      note: "",
+      product: cartItem ?? [],
+      totalPrice: cartPrice ?? 0,
+    },
+    resolver: yupResolver(userCheckoutFormSchema),
   });
-  // cityOptions
-  const citySelect = [
-    {
-      value: "HCM",
-      label: "Ho Chi Minh City",
-    },
-    {
-      value: "HN",
-      label: "Ha Noi City",
-    },
-    {
-      value: "DN",
-      label: "Da Nang City",
-    },
-  ];
+
   // form input style
   const formInputStyle = {
     marginBottom: "0px!important",
@@ -60,32 +57,8 @@ export default function Checkout() {
       height: "0px",
     },
   };
-  const handleOnChangeForm = async (event) => {
-    const { name, value } = event.target;
-    setFormCheckout({
-      ...formCheckout,
-      [name]: value,
-    });
-  };
-  const validateSchema = Yup.object({
-    name: Yup.string().required("Required"),
-    email: Yup.string().required("Required").email().required("Invalid Email"),
-    address: Yup.string().required("Required"),
-    phone: Yup.string()
-      .matches(/^\d{10}$/, "Phone number must be 10 digits")
-      .required("Required"),
-  });
-  const handlePlaceOrder = async () => {
-    try {
-      await validateSchema.validate(formCheckout, { abortEarly: false });
-      console.log("Submit Order: ", formCheckout);
-    } catch (err) {
-      const newError = {};
-      err.inner.forEach((error) => {
-        newError[error.path] = error.message;
-      });
-      setErrorMsg(newError);
-    }
+  const handleCheckout = (checkoutInfo) => {
+    console.log(checkoutInfo);
   };
   return (
     <div id="checkout_wrapper" className="!mb-8 !mt-8">
@@ -110,40 +83,40 @@ export default function Checkout() {
                   </AccordionSummary>
                   <AccordionDetails>
                     <TextField
-                      error={errorMsg.name ? true : false}
                       size="small"
                       className="w-full mb-3"
                       label="Full name"
                       id="outlined-basic"
                       name="name"
-                      helperText={`${errorMsg.name ? errorMsg.name : ""}`}
                       variant="outlined"
-                      onChange={handleOnChangeForm}
+                      error={!!errors.name}
+                      helperText={errors.name ? errors.name?.message : ""}
+                      {...register("name")}
                     />
-                    <div className="flex flex-row items-center gap-2">
+                    <div className="flex flex-col items-center gap-2 md:flex-row">
                       <TextField
                         sx={formInputStyle}
-                        error={errorMsg.phone ? true : false}
                         size="small"
                         className="w-full mb-3"
                         id="outlined-basic"
                         label="Phone"
                         name="phone"
                         variant="outlined"
-                        helperText={`${errorMsg.phone ? errorMsg.phone : ""}`}
-                        onChange={handleOnChangeForm}
+                        error={!!errors.phone}
+                        helperText={errors.phone ? errors.phone?.message : ""}
+                        {...register("phone")}
                       />
                       <TextField
                         sx={formInputStyle}
-                        error={errorMsg.email ? true : false}
                         size="small"
                         className="w-full mb-3"
                         id="outlined-basic"
                         label="Email"
                         name="email"
                         variant="outlined"
-                        helperText={`${errorMsg.email ? errorMsg.email : ""}`}
-                        onChange={handleOnChangeForm}
+                        {...register("email")}
+                        error={!!errors.email}
+                        helperText={errors.email ? errors.email?.message : ""}
                       />
                     </div>
                   </AccordionDetails>
@@ -161,17 +134,17 @@ export default function Checkout() {
                   <AccordionDetails>
                     <div className="md:flex md:flex-row md:justify-center md:items-center md:gap-4">
                       <TextField
-                        error={errorMsg.address ? true : false}
                         size="small"
                         className="w-full mb-3"
                         id="outlined-basic"
                         label="Full address"
                         name="address"
                         variant="outlined"
-                        helperText={`${
-                          errorMsg.address ? errorMsg.address : ""
-                        }`}
-                        onChange={handleOnChangeForm}
+                        error={!!errors.address}
+                        helperText={
+                          errors.address ? errors.address?.message : ""
+                        }
+                        {...register("address")}
                       />
                       <TextField
                         size="small"
@@ -182,9 +155,9 @@ export default function Checkout() {
                         name="city"
                         variant="outlined"
                         defaultValue="HCM"
-                        onChange={handleOnChangeForm}
+                        {...register("city")}
                       >
-                        {citySelect.map((item) => (
+                        {cityOptions.map((item) => (
                           <MenuItem key={item.value} value={item.value}>
                             {item.label}
                           </MenuItem>
@@ -198,7 +171,7 @@ export default function Checkout() {
                           aria-labelledby="demo-radio-buttons-group-label"
                           defaultValue="ship"
                           name="shipMethod"
-                          onChange={handleOnChangeForm}
+                          {...register("shipMethod")}
                         >
                           <FormControlLabel
                             value="ship"
@@ -237,7 +210,7 @@ export default function Checkout() {
                       aria-labelledby="demo-radio-buttons-group-label"
                       defaultValue="cash"
                       name="payment"
-                      onChange={handleOnChangeForm}
+                      {...register("payment")}
                     >
                       <FormControlLabel
                         value="cash"
@@ -264,7 +237,7 @@ export default function Checkout() {
                   name="note"
                   multiline
                   rows={4}
-                  onChange={handleOnChangeForm}
+                  {...register("note")}
                 />
               </div>
             </div>
@@ -352,16 +325,19 @@ export default function Checkout() {
                   </span>
                 </h3>
               </div>
-              <ConfirmOrder
-                styles={{
+              <CustomButton
+                type={"primary"}
+                content={"Place order"}
+                handleClick={handleSubmit(handleCheckout)}
+                sx={{
+                  width: "100%",
                   paddingTop: "5px",
                   paddingBottom: "5px",
                   borderRadius: "70px",
                   fontSize: "18px",
                   textTransform: "none",
                 }}
-                handlePlaceOrder={handlePlaceOrder}
-              ></ConfirmOrder>
+              ></CustomButton>
               <div className="w-full text-center mt-[8px] mb-3">
                 <NavLink
                   to="/cart"

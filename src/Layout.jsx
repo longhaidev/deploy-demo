@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import NewsLetter from "./components/NewsLetter/NewsLetter";
 import Footer from "./shared/Footer/Footer";
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import ScrollTop from "./components/Button/ScrollTopButton/ScrollTop";
+import ScrollTop from "components/Button/ScrollTop";
 
 export default function Layout() {
   return (

@@ -14,7 +14,7 @@ import categoryData from "../../assets/FakeData/categories.json";
 import raw from "../../assets/FakeData/products.json";
 // redux
 import { useSelector } from "react-redux";
-import ProductCard from "../../components/ProductCard/ProductCard";
+import ProductCard from "../../components/Product/ProductCard";
 import PageDirect from "components/PageDirect/PageDirect";
 export default function Product() {
   const responsiveCarousel = {
