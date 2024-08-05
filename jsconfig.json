@@ -1,9 +1,18 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
-        "paths": {
-        
-        }
+      "baseUrl": "src",
+      "paths": {
+        "redux/*": ["redux/*"],
+        "assets/*": ["assets/*"],
+        "components/*": ["components/*"],
+        "pages/*": ["pages/*"],
+        "routes/*": ["routes/*"],
+        "services/*": ["services/*"],
+        "shared/*": ["shared/*"],
+        "utils/*": ["utils/*"],
+        "hooks/*": ["hooks/*"],
+        "contexts/*": ["contexts/*"]
+      }
     },
     "include": ["src"]
-}
+  }
