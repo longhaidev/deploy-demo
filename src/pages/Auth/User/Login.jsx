@@ -44,6 +44,7 @@ export default function Login() {
   const handleLogin = (formLogin) => {
     console.log("run", formLogin);
     dispatch(doLogin(formLogin));
+    navigate("/");
   };
   //didmount
   useEffect(() => {
