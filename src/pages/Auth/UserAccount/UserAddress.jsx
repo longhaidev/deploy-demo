@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DefaultButton from "components/Button/DefaultButton";
-import UserAddressCard from "components/UserAddressCard/UserAddressCard";
+import UserAddressCard from "components/User/UserAddressCard";
 import ModalAddAddress from "components/ModalBox/ModalAddAddress";
 
 export default function UserAddress() {
